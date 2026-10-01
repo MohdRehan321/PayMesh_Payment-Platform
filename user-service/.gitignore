@@ -19,6 +19,11 @@ target/
 *.iml
 *.ipr
 
+# IDE specific
+.idea/
+*.iml
+.vscode/
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
@@ -29,5 +34,11 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-### VS Code ###
-.vscode/
+# Environment files
+.env
+.env.*
+!.env.properties
+
+# Maven
+target/
+*.jar

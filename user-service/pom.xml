@@ -6,16 +6,16 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>com.paypal</groupId>
-		<artifactId>paypal-clone</artifactId>
+		<groupId>com.paymesh</groupId>
+		<artifactId>payment_platform</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath> <!-- optional, defaults to ../pom.xml -->
 	</parent>
 
 
 
-	<groupId>com.paypal</groupId>
-	<artifactId>user-service</artifactId>  <!-- your service name here -->
+	<groupId>com.paymesh</groupId>
+	<artifactId>user-service</artifactId>  <!-- our service name here -->
 	<version>0.0.1-SNAPSHOT</version>
 	<name>User Service</name>
 	<description>Independent User Service microservice</description>
@@ -32,8 +32,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 
@@ -115,6 +115,7 @@
 						<path>
 							<groupId>org.projectlombok</groupId>
 							<artifactId>lombok</artifactId>
+							<version>1.18.30</version>
 						</path>
 					</annotationProcessorPaths>
 				</configuration>

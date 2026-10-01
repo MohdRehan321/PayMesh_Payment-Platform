@@ -4,22 +4,27 @@ server:
 spring:
   application:
     name: transaction-service
-
+  config:
+      import: optional:file:.env.properties
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: ${KAFKA_SERVER}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     template:
       default-topic: transaction-events
-
   datasource:
-    url: jdbc:h2:mem:transactiondb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-
+      url: jdbc:postgresql://localhost:5432/transaction_db
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+      driver-class-name: org.postgresql.Driver
   jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.PostgreSQLDialect
+
+jwt:
+  secret: ${JWT_SECRET}

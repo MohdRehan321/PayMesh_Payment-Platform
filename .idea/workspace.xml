@@ -3,50 +3,288 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BackgroundAgentGlobalSettings">
+    <option name="selectedModelId" value="auto" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="23d86948-b644-416c-8321-104b52c994c5" name="Changes" comment="" />
+    <list default="true" id="23d86948-b644-416c-8321-104b52c994c5" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/paymesh/api_gateway/filter/JwtAuthFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/service/TransactionServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/paypal-clone.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/plexus-utils-1.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/paypal/api_gateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/paymesh/api_gateway/ApiGatewayApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/paypal/api_gateway/filter/JwtAuthFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/java/com/paypal/api_gateway/util/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/java/com/paymesh/api_gateway/util/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api-gateway/src/test/java/com/paypal/api_gateway/ApiGatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway/src/test/java/com/paymesh/api_gateway/ApiGatewayApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/NotificationServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/NotificationServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/config/JacksonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/config/JacksonConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/config/KafkaConsumerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/controller/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/entity/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/entity/Notification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/entity/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/kafka/NotificationConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/kafka/NotificationConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/repository/NotificationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/repository/NotificationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/service/NotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/java/com/paypal/notification_service/service/NotificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/java/com/paymesh/notification_service/service/NotificationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notification-service/src/test/java/com/paypal/notification_service/NotificationServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/notification-service/src/test/java/com/paymesh/notification_service/NotificationServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/RewardServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/RewardServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/config/JacksonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/config/JacksonConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/config/KafkaConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/config/KafkaConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/controller/RewardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/controller/RewardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/entity/Reward.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/entity/Reward.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/entity/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/kafka/RewardConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/kafka/RewardConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/repository/RewardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/repository/RewardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/service/RewardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/service/RewardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/java/com/paypal/reward_service/service/RewardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/service/RewardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reward-service/src/test/java/com/paypal/reward_service/RewardServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/reward-service/src/test/java/com/paymesh/reward_service/RewardServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/TransactionServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/TransactionServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/config/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/config/JacksonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/config/JacksonConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/dto/TransferRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/dto/TransferRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/entity/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/kafka/KafkaEventProducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/kafka/KafkaEventProducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/repository/TransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/java/com/paymesh/transaction_service/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/java/com/paypal/transaction_service/service/TransactionServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/transaction-service/src/test/java/com/paypal/transaction_service/TransactionServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/transaction-service/src/test/java/com/paymesh/transaction_service/TransactionServiceApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/UserServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/UserServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/dto/JwtResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/dto/JwtResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/dto/LoginRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/dto/LoginRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/dto/SignupRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/dto/SignupRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/security/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/service/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/util/JWTUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/util/JWTUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/java/com/paypal/user_service/util/JWTrequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/java/com/paymesh/user_service/util/JWTrequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service/src/test/java/com/paypal/user_service/UserServiceApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service/src/test/java/com/paymesh/user_service/UserServiceApplicationTests.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Spring_SpringBoot/Projects/payment_platform" value="3JhGFk0RY1nTOIW260JlBWH3VLf" />
+    </persistenceIdMap>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "MohdRehan321"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;MohdRehan321&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/MohdRehan321/peerpay.git",
-    "accountId": "8082d3e5-51ab-4ddd-920b-df4da82a4e38"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/MohdRehan321/payment_platform-app.git&quot;,
+    &quot;accountId&quot;: &quot;8082d3e5-51ab-4ddd-920b-df4da82a4e38&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 6
-}]]></component>
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/reward-service/src/main/java/com/paymesh/reward_service/config/KafkaConsumer.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="3GAMNmNc5ql98OBer4kdAyWovZp" />
+  <component name="ProjectSessionTemplates">
+    <option name="panelTemplate">
+      <template>
+        <option name="modeId" value="Agent" />
+        <option name="model">
+          <model>
+            <option name="modelType" value="builtin_id" />
+            <option name="modelValue" value="auto" />
+          </model>
+        </option>
+        <option name="targetType" value="BACKGROUND" />
+        <option name="worktreeMode" value="WORKSPACE" />
+      </template>
+    </option>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Spring_SpringBoot/Projects/paypal-clone"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;Spring Boot.ApiGatewayApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.NotificationServiceApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.NotificationServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RewardServiceApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.RewardServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TransactionServiceApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.TransactionServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserServiceApplication (1).executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.UserServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;copilot.chat.legacySessionMetadata.migrated&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Spring_SpringBoot/Projects/payment_platform&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.37241378&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.RewardServiceApplication">
+    <configuration name="ApiGatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <envs>
+        <env name="JWT_SECRET" value="secret1234secret123secret12secret12" />
+        <env name="DB_PASSWORD" value="Rehan@789" />
+        <env name="DB_USERNAME" value="postgres" />
+      </envs>
+      <module name="api-gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paymesh.api_gateway.ApiGatewayApplication" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/api-gateway" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NotificationServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="JWT_SECRET" value="secret1234secret123secret12secret12" />
+        <env name="DB_PASSWORD" value="Rehan@789" />
+        <env name="DB_USERNAME" value="postgres" />
+      </envs>
+      <module name="notification-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paymesh.notification_service.NotificationServiceApplication" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/notification-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RewardServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="JWT_SECRET" value="secret1234secret123secret12secret12" />
+        <env name="DB_PASSWORD" value="Rehan@789" />
+        <env name="DB_USERNAME" value="postgres" />
+      </envs>
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="reward-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paymesh.reward_service.RewardServiceApplication" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/reward-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TransactionServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="JWT_SECRET" value="secret1234secret123secret12secret12" />
+        <env name="DB_PASSWORD" value="Rehan@789" />
+        <env name="DB_USERNAME" value="postgres" />
+      </envs>
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="transaction-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paymesh.transaction_service.TransactionServiceApplication" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/transaction-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <envs>
+        <env name="JWT_SECRET" value="secret1234secret123secret12secret12" />
+        <env name="DB_PASSWORD" value="Rehan@789" />
+        <env name="DB_USERNAME" value="postgres" />
+      </envs>
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="user-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.paymesh.user_service.UserServiceApplication" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/user-service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.ApiGatewayApplication" />
+      <item itemvalue="Spring Boot.NotificationServiceApplication" />
+      <item itemvalue="Spring Boot.RewardServiceApplication" />
+      <item itemvalue="Spring Boot.TransactionServiceApplication" />
+      <item itemvalue="Spring Boot.UserServiceApplication" />
+    </list>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.30387.90" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26927.53" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-IU-251.26927.53" />
       </set>
     </attachedChunks>
   </component>
@@ -57,7 +295,53 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1783409882964</updated>
+      <workItem from="1789673005830" duration="8536000" />
+      <workItem from="1789753811128" duration="4347000" />
+      <workItem from="1789832737426" duration="4236000" />
+      <workItem from="1789837346571" duration="4826000" />
+      <workItem from="1789884554887" duration="4003000" />
+      <workItem from="1790094304176" duration="3349000" />
+      <workItem from="1790103662165" duration="3072000" />
+      <workItem from="1790106809624" duration="865000" />
+      <workItem from="1790107716753" duration="901000" />
+      <workItem from="1790144315937" duration="12265000" />
+      <workItem from="1790230492637" duration="2038000" />
+      <workItem from="1790232583545" duration="6351000" />
+      <workItem from="1790246278429" duration="11931000" />
+      <workItem from="1790345315034" duration="12094000" />
+      <workItem from="1790399197912" duration="9509000" />
+      <workItem from="1790501438301" duration="14725000" />
+      <workItem from="1790577400113" duration="32439000" />
+      <workItem from="1790701486669" duration="4003000" />
+      <workItem from="1790708614301" duration="2057000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1783411881557</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1783411881557</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>

@@ -8,7 +8,7 @@
 		<version>3.5.0</version>
 		<relativePath/>
 	</parent>
-	<groupId>com.paypal</groupId>
+	<groupId>com.paymesh</groupId>
 	<artifactId>api-gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>api-gateway</name>
