@@ -12,7 +12,8 @@ public class LedgerEntry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    // Nullable: system entries such as wallet top-ups (deposits) are not tied to a transfer.
+    @Column
     private Long transactionId;
 
     @Column(nullable = false)

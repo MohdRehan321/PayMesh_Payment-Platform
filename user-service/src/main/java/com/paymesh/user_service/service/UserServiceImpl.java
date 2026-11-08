@@ -2,6 +2,7 @@ package com.paymesh.user_service.service;
 
 import com.paymesh.user_service.dto.SignupRequest;
 import com.paymesh.user_service.entity.User;
+import com.paymesh.user_service.kafka.UserEventProducer;
 import com.paymesh.user_service.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,14 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserEventProducer userEventProducer;
 
     // 2. Inject PasswordEncoder through the constructor
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder,
+                           UserEventProducer userEventProducer) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userEventProducer = userEventProducer;
     }
 
     @Override
@@ -35,7 +39,10 @@ public class UserServiceImpl implements UserService {
         // Encode the password before saving
         user.setPassword(passwordEncoder.encode(request.getPassword()));
 
-        return userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        // Notify downstream services so the new user's wallet gets provisioned.
+        userEventProducer.sendUserCreated(savedUser);
+        return savedUser;
     }
 
     @Override
