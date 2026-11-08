@@ -42,7 +42,7 @@ public class  AuthController {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         userRepository.save(user);
         // Save the new user
-        User savedUser = userRepository.save(user);
+        // User savedUser = userRepository.save(user);
 
         return ResponseEntity.ok("✅ User registered successfully");
     }
@@ -53,18 +53,43 @@ public class  AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
-        Optional<User> userOpt = userRepository.findByEmail(request.getEmail());
+
+        String email = request.getEmail() == null
+                ? ""
+                : request.getEmail().trim();
+
+        System.out.println("[AUTH-DEBUG] Login email: [" + email + "]");
+
+        Optional<User> userOpt = userRepository.findByEmail(email);
+
+        System.out.println("[AUTH-DEBUG] User found: " + userOpt.isPresent());
+
         if (userOpt.isEmpty()) {
-            return ResponseEntity.status(401).body("❌ User not found");
+            return ResponseEntity.status(401).body("User not found");
         }
 
         User user = userOpt.get();
-        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            return ResponseEntity.status(401).body("❌ Invalid credentials");
+
+        System.out.println("[AUTH-DEBUG] Stored hash present: "
+                + (user.getPassword() != null));
+
+        boolean passwordMatches = passwordEncoder.matches(
+                request.getPassword(),
+                user.getPassword()
+        );
+
+        System.out.println("[AUTH-DEBUG] Password matches: "
+                + passwordMatches);
+
+        if (!passwordMatches) {
+            return ResponseEntity.status(401).body("Invalid credentials");
         }
 
-        // Generate token with claims
-        String token = jwtUtil.generateToken(user.getId(), user.getEmail(), user.getRole());
+        String token = jwtUtil.generateToken(
+                user.getId(),
+                user.getEmail(),
+                user.getRole()
+        );
 
         return ResponseEntity.ok(new JwtResponse(token));
     }

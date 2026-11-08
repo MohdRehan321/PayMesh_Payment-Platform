@@ -1,18 +1,11 @@
 package com.paymesh.user_service.util;
 
-
-import org.springframework.beans.factory.annotation.Value;  // ✅ correct
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
 import java.security.Key;
 import io.jsonwebtoken.security.Keys;
-
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
-import org.springframework.stereotype.Component;
-
 
 import java.util.Date;
 import java.util.HashMap;
@@ -20,10 +13,11 @@ import java.util.Map;
 
 @Component
 public class JWTUtil {
-    private static final String SECRET = "secret123secret123secret123secret12";
+    @Value("${jwt.secret}")
+    private String secret;
 
     private Key getSigningKey() {
-        return Keys.hmacShaKeyFor(SECRET.getBytes());
+        return Keys.hmacShaKeyFor(secret.getBytes());
     }
     public String extractEmail(String token){
         return Jwts.parserBuilder()
@@ -83,11 +77,5 @@ public class JWTUtil {
                         .get("userId").toString()
         );
     }
-
-
-
-
-
-
 
 }

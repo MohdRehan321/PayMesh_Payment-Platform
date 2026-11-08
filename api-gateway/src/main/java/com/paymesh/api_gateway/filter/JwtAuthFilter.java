@@ -2,6 +2,8 @@ package com.paymesh.api_gateway.filter;
 
 import com.paymesh.api_gateway.util.JwtUtil;
 import io.jsonwebtoken.Claims;
+import org.slf4j.ILoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -22,6 +24,9 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
             "/auth/signup",
             "/auth/login"
     );
+
+    @Value("${paymesh.gateway.secret}")
+    private String gatewaySecret;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
@@ -48,14 +53,22 @@ public class JwtAuthFilter implements GlobalFilter, Ordered {
             String token = authHeader.substring(7);
             Claims claims = JwtUtil.validateToken(token);
 
-            String userId = claims.get("id") != null
-                    ? String.valueOf(claims.get("id"))
-                    : claims.getSubject();
+            Object userIdClaim = claims.get("userId");
+
+            if (userIdClaim == null) {
+                throw new IllegalArgumentException("JWT is missing userId claim");
+            }
+
+            Long userId = Long.valueOf(String.valueOf(userIdClaim));
+
+            if (userId <= 0) {
+                throw new IllegalArgumentException("Invalid userId claim");
+            }
 
             ServerHttpRequest mutatedRequest = request.mutate()
                     .header("X-User-Email", claims.getSubject())
-                    .header("X-User-Id", userId)
-                    .header("X-Gateway-Secret", "my-internal-secret")
+                    .header("X-User-Id", String.valueOf(userId))
+                    .header("X-Gateway-Secret", gatewaySecret)
                     .build();
 
             ServerWebExchange mutatedExchange = exchange.mutate()

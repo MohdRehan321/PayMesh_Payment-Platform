@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -31,7 +32,7 @@
       <module name="api-gateway" options="-parameters" />
       <module name="notification-service" options="-parameters" />
       <module name="reward-service" options="-parameters" />
-      <module name="transaction-service" options="" />
+      <module name="transaction-service" options="-parameters" />
       <module name="user-service" options="" />
     </option>
   </component>

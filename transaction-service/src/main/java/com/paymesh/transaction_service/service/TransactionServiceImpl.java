@@ -1,6 +1,5 @@
 package com.paymesh.transaction_service.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.paymesh.transaction_service.dto.TransferRequest;
 import com.paymesh.transaction_service.entity.LedgerEntry;
 import com.paymesh.transaction_service.entity.Transaction;
@@ -9,10 +8,10 @@ import com.paymesh.transaction_service.kafka.KafkaEventProducer;
 import com.paymesh.transaction_service.repository.LedgerEntryRepository;
 import com.paymesh.transaction_service.repository.TransactionRepository;
 import com.paymesh.transaction_service.repository.WalletRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -24,28 +23,23 @@ public class TransactionServiceImpl implements TransactionService {
     private final TransactionRepository repository;
     private final WalletRepository walletRepository;
     private final LedgerEntryRepository ledgerEntryRepository;
-    private final ObjectMapper objectMapper;
     private final KafkaEventProducer kafkaEventProducer;
-
-    @Autowired
-    private RestTemplate restTemplate;
+    private static final Logger log = LoggerFactory.getLogger(TransactionServiceImpl.class);
 
     public TransactionServiceImpl(TransactionRepository repository,
                                   WalletRepository walletRepository,
                                   LedgerEntryRepository ledgerEntryRepository,
-                                  KafkaEventProducer kafkaEventProducer,
-                                  ObjectMapper objectMapper) {
+                                  KafkaEventProducer kafkaEventProducer) {
         this.repository = repository;
         this.walletRepository = walletRepository;
         this.ledgerEntryRepository = ledgerEntryRepository;
-        this.objectMapper = objectMapper;
         this.kafkaEventProducer = kafkaEventProducer;
     }
 
     @Override
     @Transactional
     public Transaction createTransaction(TransferRequest request) {
-        System.out.println("🚀 Entered createTransaction()");
+        log.info("Entered createTransaction()");
 
         if (request.getIdempotencyKey() == null || request.getIdempotencyKey().isBlank()) {
             throw new IllegalArgumentException("Idempotency key is required");
@@ -92,15 +86,15 @@ public class TransactionServiceImpl implements TransactionService {
         ledgerEntryRepository.save(debit);
         ledgerEntryRepository.save(credit);
 
-        System.out.println("💾 Saved Transaction and Ledger entries successfully.");
+        log.info("💾 Saved Transaction and Ledger entries successfully.");
 
         try {
             String key = String.valueOf(savedTransaction.getId());
             kafkaEventProducer.sendTransactionEvent(key, savedTransaction);
-            System.out.println("🚀 Kafka message sent");
+            log.info("Kafka message sent for transactionId={}", savedTransaction.getId());
         } catch (Exception e) {
-            System.err.println("❌ Failed to send Kafka event: " + e.getMessage());
-            e.printStackTrace();
+            log.error("Failed to send Kafka event for transactionId={}",
+                    savedTransaction.getId(), e);
         }
 
         return savedTransaction;
@@ -109,5 +103,10 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public List<Transaction> getAllTransactions() {
         return repository.findAll();
+    }
+
+    @Override
+    public List<Transaction> getTransactionsByUserId(Long userId) {
+        return repository.findBySenderIdOrReceiverIdOrderByTimestampDesc(userId, userId);
     }
 }

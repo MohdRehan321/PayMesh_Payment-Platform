@@ -8,17 +8,22 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.List;
 
-@Component
+// NOTE: no @Component here, it is registered in SecurityConfig instead
 public class JWTrequestFilter extends OncePerRequestFilter {
     private final JWTUtil jwtUtil;
     public JWTrequestFilter(JWTUtil jwtUtil){
         this.jwtUtil = jwtUtil;
+    }
+
+
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        return request.getServletPath().startsWith("/auth/");   // public endpoints
     }
 
     @Override
@@ -81,18 +86,4 @@ public class JWTrequestFilter extends OncePerRequestFilter {
 
     }
 
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
