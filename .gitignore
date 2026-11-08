@@ -1,0 +1,6 @@
+
+# Environment secrets
+.env.properties
+
+# IDE configuration
+.idea/
