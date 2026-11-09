@@ -1,12 +1,24 @@
 package com.paymesh.transaction_service.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
 import java.math.BigDecimal;
 
 public class TransferRequest {
 
+    @NotNull(message = "senderId is required")
     private Long senderId;
+
+    @NotNull(message = "receiverId is required")
     private Long receiverId;
+
+    @NotNull(message = "amount is required")
+    @Positive(message = "amount must be positive")
     private BigDecimal amount;
+
+    @NotBlank(message = "idempotencyKey is required")
     private String idempotencyKey;
 
 

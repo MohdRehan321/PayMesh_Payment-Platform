@@ -18,6 +18,16 @@ spring:
       properties:
         hibernate:
           dialect: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+     bootstrap-servers: ${KAFKA_SERVER:localhost:9092}
+  producer:
+     key-serializer: org.apache.kafka.common.serialization.StringSerializer
+     value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+paymesh:
+   kafka:
+      topics:
+         user-created: user-created
 
 jwt:
    secret: ${JWT_SECRET}

@@ -4,6 +4,7 @@ import com.paymesh.user_service.dto.JwtResponse;
 import com.paymesh.user_service.dto.LoginRequest;
 import com.paymesh.user_service.dto.SignupRequest;
 import com.paymesh.user_service.entity.User;
+import com.paymesh.user_service.kafka.UserEventProducer;
 import com.paymesh.user_service.repository.UserRepository;
 import com.paymesh.user_service.util.JWTUtil;
 import org.springframework.http.ResponseEntity;
@@ -21,11 +22,14 @@ public class  AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JWTUtil jwtUtil;
+    private final UserEventProducer userEventProducer;
 
-    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, JWTUtil jwtUtil) {
+    public AuthController(UserRepository userRepository, PasswordEncoder passwordEncoder, JWTUtil jwtUtil,
+                          UserEventProducer userEventProducer) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
+        this.userEventProducer = userEventProducer;
     }
 
     @PostMapping("/signup")
@@ -41,8 +45,8 @@ public class  AuthController {
         user.setRole("ROLE_USER");  // Normal users only!
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         userRepository.save(user);
-        // Save the new user
-        // User savedUser = userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        userEventProducer.sendUserCreated(savedUser);
 
         return ResponseEntity.ok("✅ User registered successfully");
     }

@@ -4,6 +4,9 @@ import com.paymesh.transaction_service.dto.TransferRequest;
 import com.paymesh.transaction_service.entity.LedgerEntry;
 import com.paymesh.transaction_service.entity.Transaction;
 import com.paymesh.transaction_service.entity.Wallet;
+import com.paymesh.transaction_service.exception.AccountNotFoundException;
+import com.paymesh.transaction_service.exception.DuplicateTransactionException;
+import com.paymesh.transaction_service.exception.InsufficientFundsException;
 import com.paymesh.transaction_service.kafka.KafkaEventProducer;
 import com.paymesh.transaction_service.repository.LedgerEntryRepository;
 import com.paymesh.transaction_service.repository.TransactionRepository;
@@ -44,31 +47,47 @@ public class TransactionServiceImpl implements TransactionService {
         if (request.getIdempotencyKey() == null || request.getIdempotencyKey().isBlank()) {
             throw new IllegalArgumentException("Idempotency key is required");
         }
-        if (repository.existsByIdempotencyKey(request.getIdempotencyKey())) {
-            throw new RuntimeException("Duplicate transaction detected. Request safely ignored.");
-        }
 
         Long senderId = request.getSenderId();
         Long receiverId = request.getReceiverId();
         BigDecimal amount = request.getAmount();
 
-        // 1. Fetch Wallets (or fail if they don't exist)
-        Wallet senderWallet = walletRepository.findByUserId(senderId)
-                .orElseThrow(() -> new RuntimeException("Sender wallet not found"));
-
-        Wallet receiverWallet = walletRepository.findByUserId(receiverId)
-                .orElseThrow(() -> new RuntimeException("Receiver wallet not found"));
-
-        // 2. Check for sufficient funds
-        if (senderWallet.getBalance().compareTo(amount) < 0) {
-            throw new RuntimeException("Insufficient funds in sender's wallet");
+        if (senderId == null || receiverId == null) {
+            throw new IllegalArgumentException("Sender and receiver IDs are required");
         }
+        if (senderId.equals(receiverId)) {
+            throw new IllegalArgumentException("Sender and receiver must be different users");
+        }
+        if (amount == null || amount.signum() <= 0) {
+            throw new IllegalArgumentException("Transfer amount must be greater than zero");
+        }
+
+        if (repository.existsByIdempotencyKey(request.getIdempotencyKey())) {
+            throw new DuplicateTransactionException(
+                    "Duplicate transaction detected for idempotency key: " + request.getIdempotencyKey());
+        }
+
+        Long lowerId = senderId < receiverId ? senderId : receiverId;
+        Long higherId = senderId < receiverId ? receiverId : senderId;
+
+        Wallet lowerWallet = walletRepository.findByUserIdForUpdate(lowerId)
+                .orElseThrow(() -> new AccountNotFoundException(walletMissingMessage(lowerId, senderId)));
+        Wallet higherWallet = walletRepository.findByUserIdForUpdate(higherId)
+                .orElseThrow(() -> new AccountNotFoundException(walletMissingMessage(higherId, senderId)));
+
+        Wallet senderWallet = lowerId.equals(senderId) ? lowerWallet : higherWallet;
+        Wallet receiverWallet = lowerId.equals(receiverId) ? lowerWallet : higherWallet;
 
         // 3. Move the money and save updated balances
         senderWallet.setBalance(senderWallet.getBalance().subtract(amount));
         receiverWallet.setBalance(receiverWallet.getBalance().add(amount));
         walletRepository.save(senderWallet);
         walletRepository.save(receiverWallet);
+
+        // 2. Check for sufficient funds
+        if (senderWallet.getBalance().compareTo(amount) < 0) {
+            throw new InsufficientFundsException("Insufficient funds in sender's wallet");
+        }
 
         // 4. Record the overall Transaction
         Transaction transaction = new Transaction();
@@ -86,18 +105,29 @@ public class TransactionServiceImpl implements TransactionService {
         ledgerEntryRepository.save(debit);
         ledgerEntryRepository.save(credit);
 
-        log.info("💾 Saved Transaction and Ledger entries successfully.");
+        log.info("Saved transaction and ledger entries successfully (transactionId={})", savedTransaction.getId());
+
+        sendEventSafely(savedTransaction);
+
+        return savedTransaction;
+    }
+
+    private String walletMissingMessage(Long missingId, Long senderId) {
+        return missingId.equals(senderId)
+                ? "Sender wallet not found for user " + missingId
+                : "Receiver wallet not found for user " + missingId;
+    }
+
+    private void sendEventSafely(Transaction savedTransaction) {
 
         try {
             String key = String.valueOf(savedTransaction.getId());
             kafkaEventProducer.sendTransactionEvent(key, savedTransaction);
             log.info("Kafka message sent for transactionId={}", savedTransaction.getId());
         } catch (Exception e) {
-            log.error("Failed to send Kafka event for transactionId={}",
-                    savedTransaction.getId(), e);
+            log.error("Failed to send Kafka event for transactionId={}", savedTransaction.getId(), e);
         }
 
-        return savedTransaction;
     }
 
     @Override
